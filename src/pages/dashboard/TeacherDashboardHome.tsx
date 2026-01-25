@@ -18,8 +18,9 @@ const TeacherDashboardHome = () => {
     dispatch(getTimetable());
   }, [dispatch]);
 
-  // Filter schedule for this teacher
-  const mySchedule = schedule.filter(s => s.teacherId === userInfo?._id);
+  // Filter schedule for this teacher (compare as strings)
+  const teacherId = userInfo?._id?.toString();
+  const mySchedule = schedule.filter(s => s.teacherId?.toString() === teacherId);
   
   // Get Today's Classes (e.g., "Monday")
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });

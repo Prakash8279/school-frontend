@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
 import { getFeeHistory } from "@/store/slices/feeSlice"; // Fetch fees from API
 import { listStudents } from "@/store/slices/studentSlice"; // Fetch student profile
+import { fetchFeeStructure } from "@/store/slices/feeStructureSlice"; // Fetch fee structure
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,7 @@ const MyFees = () => {
   const { userInfo } = useSelector((state: RootState) => state.auth);
   const { students } = useSelector((state: RootState) => state.student);
   const { history: allPayments, loading } = useSelector((state: RootState) => state.fees);
+  const { structure: feeStructureList } = useSelector((state: RootState) => state.feeStructure);
 
   const [feeStatus, setFeeStatus] = useState<StudentFeeStatus | null>(null);
   const [myPayments, setMyPayments] = useState<any[]>([]);
@@ -28,33 +30,38 @@ const MyFees = () => {
   // 1. Fetch Data on Mount
   useEffect(() => {
     dispatch(listStudents());
-    dispatch(getFeeHistory());
+    dispatch(getFeeHistory({}));
+    dispatch(fetchFeeStructure());
   }, [dispatch]);
 
   // 2. Calculate Status when Data Available
   useEffect(() => {
-    if (userInfo && students.length > 0) {
-      // Find the logged-in student's profile details using email or ID
-      // Note: userInfo._id from auth might match student._id if linked, 
-      // but checking email is often safer if IDs differ between Auth/Student tables
+    if (userInfo && students.length > 0 && feeStructureList.length > 0) {
+      // Find the logged-in student's profile details using email or admission_no
+      // userInfo.admission_no is set for student users during login
       const currentStudent = students.find(s => s.email === userInfo.email) || 
-                             students.find(s => s._id === userInfo._id);
+                             students.find(s => s.admission_no === userInfo.admission_no);
 
       if (currentStudent) {
         // Calculate status using the helper and REAL backend payments
         const status = getStudentFeeStatus(
-          currentStudent._id || "",
+          currentStudent.admission_no || "",
           currentStudent.student_name,
           currentStudent.admission_no,
           currentStudent.classname,
           currentStudent.roll_no || "N/A",
           allPayments, // Pass the full history, helper filters it
-          currentStudent.usesBus
+          feeStructureList, // Pass fee structure list
+          undefined, // admission_date
+          currentStudent.usesBus || false
         );
         setFeeStatus(status);
 
-        // Filter payments for just this student for the table
-        const studentPayments = allPayments.filter(p => p.studentId === currentStudent._id);
+        // Filter payments for just this student for the table using admission_no
+        const studentPayments = allPayments.filter(p => 
+          String(p.admissionNo) === String(currentStudent.admission_no) ||
+          String(p.studentId) === String(currentStudent.admission_no)
+        );
         
         // Sort by date (newest first)
         setMyPayments(studentPayments.sort((a, b) => 
@@ -62,7 +69,7 @@ const MyFees = () => {
         ));
       }
     }
-  }, [userInfo, students, allPayments]);
+  }, [userInfo, students, allPayments, feeStructureList]);
 
   if (!feeStatus || loading) {
     return (
@@ -76,8 +83,13 @@ const MyFees = () => {
     );
   }
 
-  const balance = feeStatus.pendingAmount;
-  const status = balance <= 0 ? "Paid" : feeStatus.totalPaid === 0 ? "Pending" : "Partial";
+  // Ensure all values are numbers to avoid string concatenation
+  const monthlyFee = Number(feeStatus.monthlyFee) || 0;
+  const totalPaid = Number(feeStatus.totalPaid) || 0;
+  const totalDue = Number(feeStatus.totalDue) || 0;
+  const pendingAmount = Number(feeStatus.pendingAmount) || 0;
+  const balance = pendingAmount;
+  const status = balance <= 0 ? "Paid" : totalPaid === 0 ? "Pending" : "Partial";
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
@@ -96,7 +108,7 @@ const MyFees = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-900">₹{feeStatus.monthlyFee}</div>
+            <div className="text-2xl font-bold text-blue-900">₹{monthlyFee.toLocaleString()}</div>
             <p className="text-xs text-blue-700 mt-1">Per Month</p>
           </CardContent>
         </Card>
@@ -109,8 +121,8 @@ const MyFees = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-900">₹{feeStatus.totalPaid}</div>
-            <p className="text-xs text-green-700 mt-1">Out of ₹{feeStatus.totalDue}</p>
+            <div className="text-2xl font-bold text-green-900">₹{totalPaid.toLocaleString()}</div>
+            <p className="text-xs text-green-700 mt-1">Out of ₹{totalDue.toLocaleString()}</p>
           </CardContent>
         </Card>
 
@@ -123,7 +135,7 @@ const MyFees = () => {
           </CardHeader>
           <CardContent>
             <div className={`text-2xl font-bold ${balance > 0 ? 'text-red-900' : 'text-purple-900'}`}>
-              ₹{balance}
+              ₹{balance.toLocaleString()}
             </div>
             <p className={`text-xs mt-1 ${balance > 0 ? 'text-red-700' : 'text-purple-700'}`}>
               {balance > 0 ? "Pending" : "All Paid"}
@@ -146,7 +158,7 @@ const MyFees = () => {
               {status}
             </Badge>
             <p className="text-xs text-orange-700 mt-2">
-              {feeStatus.pendingMonths.length} months pending
+              {feeStatus.pendingMonths?.length || 0} months pending
             </p>
           </CardContent>
         </Card>
@@ -212,18 +224,20 @@ const MyFees = () => {
                   {myPayments.map((payment) => (
                     <TableRow key={payment._id}>
                       <TableCell>
-                        {new Date(payment.date).toLocaleDateString()}
+                        {new Date(payment.date).toLocaleDateString('en-IN')}
                       </TableCell>
                       <TableCell>
                         <Badge variant="outline">{payment.feeType || "Monthly Fee"}</Badge>
                       </TableCell>
                       <TableCell>{payment.month} {payment.year}</TableCell>
-                      <TableCell className="font-bold text-green-600">₹{payment.totalAmount}</TableCell>
+                      <TableCell className="font-bold text-green-600">
+                        ₹{Number(payment.totalAmount || 0).toLocaleString()}
+                      </TableCell>
                       <TableCell>
-                        {/* Note: Check if backend sends usesBus/busFee in payment record, 
-                            if not available, show '-' */}
-                        {payment.busFee ? (
-                          <span className="text-blue-600 font-medium">₹{payment.busFee}</span>
+                        {Number(payment.bus_fee || payment.busFee || 0) > 0 ? (
+                          <span className="text-blue-600 font-medium">
+                            ₹{Number(payment.bus_fee || payment.busFee).toLocaleString()}
+                          </span>
                         ) : (
                           <span className="text-muted-foreground">-</span>
                         )}

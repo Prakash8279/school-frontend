@@ -22,12 +22,13 @@ const StudentDashboardHome = () => {
   }, [dispatch]);
 
   // --- Calculate My Stats ---
-  // 1. Attendance
+  // 1. Attendance (match by admission_no)
   let presentClasses = 0;
   let totalClasses = 0;
+  const myAdmissionNo = userInfo?.admission_no;
   
   attendanceHistory.forEach(record => {
-    const myRecord = record.records.find(r => r.studentId === userInfo?._id);
+    const myRecord = record.records.find(r => r.studentId === myAdmissionNo);
     if (myRecord) {
       totalClasses++;
       if (myRecord.status === "Present") presentClasses++;
@@ -36,9 +37,9 @@ const StudentDashboardHome = () => {
   
   const attendancePercentage = totalClasses === 0 ? 100 : Math.round((presentClasses / totalClasses) * 100);
 
-  // 2. Fees
-  const myPayments = feeHistory.filter(f => f.studentId === userInfo?._id);
-  const lastPayment = myPayments[myPayments.length - 1];
+  // 2. Fees (match by admission_no)
+  const myPayments = feeHistory.filter(f => f.admissionNo === myAdmissionNo);
+  const lastPayment = myPayments.length > 0 ? myPayments[myPayments.length - 1] : null;
 
   return (
     <div className="space-y-6">
