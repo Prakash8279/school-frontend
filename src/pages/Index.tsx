@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import TopHeader from "@/components/TopHeader";
 import Navbar from "@/components/Navbar";
@@ -34,16 +35,27 @@ const Index = () => {
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen">
-      <TopHeader />
-      <Navbar />
-      <Hero3D />
-      <NoticeBoard />
-      <About />
-      <Gallery />
-      <Contact />
-      <FooterNew />
-    </div>
+    <>
+      <Helmet>
+        <title>R.N.T Public School, Janki Nagar Basabtpur</title>
+        <meta name="description" content="R.N.T Public School, Janki Nagar Basabtpur - Best school for holistic education, experienced teachers, modern facilities, and a nurturing environment." />
+        <meta name="keywords" content="RNT Public School, Janki Nagar Basabtpur, best school, admission, academics, facilities, education" />
+        <meta property="og:title" content="R.N.T Public School, Janki Nagar Basabtpur" />
+        <meta property="og:description" content="R.N.T Public School, Janki Nagar Basabtpur - Best school for holistic education, experienced teachers, modern facilities, and a nurturing environment." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.rntpublicschool.in/logo.png" />
+      </Helmet>
+      <div className="min-h-screen">
+        <TopHeader />
+        <Navbar />
+        <Hero3D />
+        <NoticeBoard />
+        <About />
+        <Gallery />
+        <Contact />
+        <FooterNew />
+      </div>
+    </>
   );
 };
 
