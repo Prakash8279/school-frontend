@@ -12,7 +12,6 @@ const FooterNew = () => {
     { name: "Our Vision", href: "/about/vision", isPage: true },
     { name: "Gallery", href: "#gallery", isPage: false },
     { name: "Contact Us", href: "#contact", isPage: false },
-    { name: "Fee Structure", href: "/admission/fee-structure", isPage: true },
   ];
 
   const socialLinks = [
