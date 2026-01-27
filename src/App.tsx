@@ -48,7 +48,6 @@ import PrincipalMessage from "./pages/about/PrincipalMessage";
 
 // Admission Pages
 import AdmissionProcess from "./pages/admission/AdmissionProcess";
-import FeeStructure from "./pages/admission/FeeStructure";
 import ApplyOnline from "./pages/admission/ApplyOnline";
 
 // Academics Pages
@@ -57,9 +56,6 @@ import TimeTable from "./pages/academics/TimeTable";
 import ExamSchedule from "./pages/academics/ExamSchedule";
 
 // CBSE Pages
-import SchoolInformation from "./pages/cbse/SchoolInformation";
-import Documents from "./pages/cbse/Documents";
-import AffiliationStatus from "./pages/cbse/AffiliationStatus";
 
 const queryClient = new QueryClient();
 
@@ -98,7 +94,6 @@ const App = () => (
           
           {/* Admission Pages */}
           <Route path="/admission/process" element={<AdmissionProcess />} />
-          <Route path="/admission/fee-structure" element={<FeeStructure />} />
           <Route path="/admission/apply" element={<ApplyOnline />} />
           
           {/* Academics Pages */}
@@ -106,10 +101,7 @@ const App = () => (
           <Route path="/academics/timetable" element={<TimeTable />} />
           <Route path="/academics/exam-schedule" element={<ExamSchedule />} />
           
-          {/* CBSE Pages */}
-          <Route path="/cbse/school-info" element={<SchoolInformation />} />
-          <Route path="/cbse/documents" element={<Documents />} />
-          <Route path="/cbse/affiliation" element={<AffiliationStatus />} />
+          {/* CBSE Pages removed as files do not exist */}
 
           {/* --- Protected School Management Routes --- */}
           <Route 

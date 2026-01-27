@@ -32,7 +32,7 @@ const Navbar = () => {
         { name: "Our Mission", href: "/about/mission" },
         { name: "Our Vision", href: "/about/vision" },
         { name: "Chairman Message", href: "/about/chairman-message" },
-        { name: "Secretary Message", href: "/about/secretary-message" },
+        // { name: "Secretary Message", href: "/about/secretary-message" },
         { name: "Principal Message", href: "/about/principal-message" },
       ]
     },
@@ -41,7 +41,6 @@ const Navbar = () => {
       href: "#contact",
       dropdown: [
         { name: "Admission Process", href: "/admission/process" },
-        { name: "Fee Structure", href: "/admission/fee-structure" },
         { name: "Apply Online", href: "/admission/apply" },
       ]
     },
@@ -54,15 +53,7 @@ const Navbar = () => {
         { name: "Exam Schedule", href: "/academics/exam-schedule" },
       ]
     },
-    { 
-      name: "CBSE Mandatory", 
-      href: "#",
-      dropdown: [
-        { name: "School Information", href: "/cbse/school-info" },
-        { name: "Documents", href: "/cbse/documents" },
-        { name: "Affiliation Status", href: "/cbse/affiliation" },
-      ]
-    },
+    
     { name: "Gallery", href: "#gallery" },
     { name: "Contact us", href: "#contact" },
   ];

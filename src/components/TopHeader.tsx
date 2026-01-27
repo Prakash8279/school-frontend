@@ -6,7 +6,7 @@ const TopHeader = () => {
     "100% Result in Board Exams",
     "Transport Facility Available",
     "New Smart Classrooms",
-    "CBSE Affiliated School",
+    "Affiliated School",
   ];
 
   return (
@@ -38,7 +38,7 @@ const TopHeader = () => {
 
             {/* Right - School Info & WhatsApp */}
             <div className="flex items-center gap-4">
-              <span className="hidden sm:inline text-slate-400">School Code: <strong className="text-white">65247</strong></span>
+              {/* <span className="hidden sm:inline text-slate-400">School Code: <strong className="text-white">65247</strong></span> */}
               <a 
                 href="https://wa.me/917061337068?text=नमस्ते%2C%20मैं%20R.N.T.%20Public%20School%20में%20Admission%20के%20लिए%20Enquiry%20करना%20चाहता%2Fचाहती%20हूं।%20कृपया%20जानकारी%20दें।"
                 target="_blank"

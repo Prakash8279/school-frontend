@@ -24,7 +24,7 @@ const SecretaryMessage = () => {
                     <span className="text-4xl font-bold text-green-600">SM</span>
                   </div>
                   <div className="text-center md:text-left">
-                    <h2 className="text-2xl font-bold">Shri Vijay Kumar</h2>
+{/* //                   <h2 className="text-2xl font-bold">Shri Vijay Kumar</h2> */}
                     <p className="text-green-200">Secretary, R.N.T. Public School</p>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ const SecretaryMessage = () => {
                   </p>
                   <p className="font-semibold mt-6">
                     Best wishes,<br />
-                    Shri Vijay Kumar<br />
+                    {/* Shri Vijay Kumar<br /> */}
                     Secretary
                   </p>
                 </div>

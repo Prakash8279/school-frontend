@@ -6,21 +6,19 @@ import { Clock, Calendar, Info } from "lucide-react";
 const TimeTable = () => {
   const schoolTiming = {
     summer: { start: "7:30 AM", end: "1:30 PM", period: "April to September" },
-    winter: { start: "8:30 AM", end: "2:30 PM", period: "October to March" },
+    winter: { start: "8:45 AM", end: "2:00 PM", period: "October to March" },
   };
 
   const dailySchedule = [
-    { time: "7:30 / 8:30", activity: "Morning Assembly", duration: "20 min" },
-    { time: "7:50 / 8:50", activity: "1st Period", duration: "40 min" },
-    { time: "8:30 / 9:30", activity: "2nd Period", duration: "40 min" },
-    { time: "9:10 / 10:10", activity: "3rd Period", duration: "40 min" },
-    { time: "9:50 / 10:50", activity: "Short Break", duration: "15 min" },
-    { time: "10:05 / 11:05", activity: "4th Period", duration: "40 min" },
-    { time: "10:45 / 11:45", activity: "5th Period", duration: "40 min" },
-    { time: "11:25 / 12:25", activity: "Lunch Break", duration: "30 min" },
-    { time: "11:55 / 12:55", activity: "6th Period", duration: "40 min" },
-    { time: "12:35 / 1:35", activity: "7th Period", duration: "40 min" },
-    { time: "1:15 / 2:15", activity: "Dispersal", duration: "-" },
+    { time: "8:45 / 9:00", activity: "Morning Assembly", duration: "15 min" },
+    { time: "9:00 / 9:45", activity: "1st Period", duration: "45 min" },
+    { time: "9:45 / 10:30", activity: "2nd Period", duration: "45 min" },
+    { time: "10:30 / 11:15", activity: "3rd Period", duration: "45 min" },
+    { time: "11:15 / 12:00", activity: "4th Period", duration: "45 min" },
+    { time: "12:00 / 12:30", activity: "Lunch Break", duration: "30 min" },
+    { time: "12:30 / 1:15", activity: "5th Period", duration: "45 min" },
+    { time: "1:15 / 2:00", activity: "6th Period", duration: "45 min" },
+    
   ];
 
   const weeklyActivities = [

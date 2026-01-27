@@ -70,7 +70,7 @@ const AdmissionProcess = () => {
             {/* Admission Open Banner */}
             <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-6 mb-12 text-white text-center">
               <h2 className="text-2xl font-bold mb-2">🎉 Admissions Open for 2026-27!</h2>
-              <p>Nursery to Class 7 | Limited Seats Available</p>
+              <p>Nursery to Class 8 | Limited Seats Available</p>
             </div>
 
             {/* Steps */}

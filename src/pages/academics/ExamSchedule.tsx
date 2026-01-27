@@ -35,7 +35,7 @@ const ExamSchedule = () => {
     { class: "Nursery - UKG", pattern: "Oral + Activity Based Assessment" },
     { class: "Class 1-2", pattern: "Oral + Written (Simple)" },
     { class: "Class 3-5", pattern: "Written Exam + Project Work" },
-    { class: "Class 6-7", pattern: "Written Exam + Practical + Project" },
+    { class: "Class 6-8", pattern: "Written Exam + Practical + Project" },
   ];
 
   const guidelines = [

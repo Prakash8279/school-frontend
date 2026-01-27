@@ -24,7 +24,7 @@ const ChairmanMessage = () => {
                     <span className="text-4xl font-bold text-blue-600">CM</span>
                   </div>
                   <div className="text-center md:text-left">
-                    <h2 className="text-2xl font-bold">Shri Ram Nath Tiwari</h2>
+                    {/* <h2 className="text-2xl font-bold">Shri Ram Nath Tiwari</h2> */}
                     <p className="text-blue-200">Chairman, R.N.T. Public School</p>
                   </div>
                 </div>
@@ -59,7 +59,7 @@ const ChairmanMessage = () => {
                   </p>
                   <p className="font-semibold mt-6">
                     With warm regards,<br />
-                    Shri Ram Nath Tiwari<br />
+                    {/* Shri Ram Nath Tiwari<br /> */}
                     Chairman
                   </p>
                 </div>

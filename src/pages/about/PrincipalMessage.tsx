@@ -24,7 +24,7 @@ const PrincipalMessage = () => {
                     <span className="text-4xl font-bold text-purple-600">PM</span>
                   </div>
                   <div className="text-center md:text-left">
-                    <h2 className="text-2xl font-bold">Mrs. Sunita Sharma</h2>
+                    <h2 className="text-2xl font-bold">Mr. Pawan Kumar</h2>
                     <p className="text-purple-200">Principal, R.N.T. Public School</p>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ const PrincipalMessage = () => {
                   </p>
                   <p className="font-semibold mt-6">
                     With best wishes,<br />
-                    Mrs. Sunita Sharma<br />
+                    Mr. Pawan Kumar<br />
                     Principal
                   </p>
                 </div>

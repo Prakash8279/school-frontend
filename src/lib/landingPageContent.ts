@@ -60,15 +60,15 @@ const DEFAULT_CONTENT: LandingPageContent = {
     applyButtonText: "Apply Now 🚀",
     learnMoreButtonText: "Learn More 📚",
     stats: {
-      students: { value: "400+", label: "Happy Students 🎓" },
+      students: { value: "500+", label: "Happy Students 🎓" },
       ratio: { value: "30:1", label: "Student-Teacher 👥" },
-      years: { value: "10+", label: "Years of Fun 🎉" },
+      years: { value: "5+", label: "Years of Fun 🎉" },
     },
   },
   about: {
     title: "About Our",
     titleHighlight: "Primary School",
-    description: "For over 25 years, we've been nurturing young minds from Nursery to 8th grade! Our primary school creates a safe, joyful environment where children build strong academic foundations while developing confidence, creativity, and essential life skills through play-based and experiential learning. 🌈✨",
+    description: "Five years, we've been nurturing young minds from Nursery to 8th grade! Our primary school creates a safe, joyful environment where children build strong academic foundations while developing confidence, creativity, and essential life skills through play-based and experiential learning. 🌈✨",
     missionTitle: "Our Mission",
     missionText: "To nurture curious, confident, and kind young learners by providing an engaging primary education that sparks imagination, builds strong foundations, and instills values that will guide them throughout their educational journey and beyond! 🚀💫",
     features: [

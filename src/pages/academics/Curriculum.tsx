@@ -85,7 +85,7 @@ const Curriculum = () => {
                   </div>
                   <div className="p-4 bg-white rounded-lg">
                     <h4 className="font-bold text-gray-800">Middle School</h4>
-                    <p className="text-sm text-gray-600">Class 6 to 7</p>
+                    <p className="text-sm text-gray-600">Class 6 to 8</p>
                     <p className="text-xs text-gray-500 mt-1">Advanced Learning</p>
                   </div>
                 </div>
