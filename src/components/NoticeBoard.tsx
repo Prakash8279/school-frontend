@@ -12,7 +12,7 @@ const NoticeBoard = () => {
   ];
 
   const features = [
-    { icon: BookOpen, title: "Quality Education", desc: "CBSE Curriculum", color: "text-blue-500", bg: "bg-blue-50" },
+    { icon: BookOpen, title: "Quality Education", desc: "Modern Curriculum", color: "text-blue-500", bg: "bg-blue-50" },
     { icon: Users, title: "Expert Faculty", desc: "Experienced Teachers", color: "text-green-500", bg: "bg-green-50" },
     { icon: Monitor, title: "Smart Classes", desc: "Digital Learning", color: "text-purple-500", bg: "bg-purple-50" },
     { icon: Bus, title: "Transport", desc: "Safe Bus Service", color: "text-orange-500", bg: "bg-orange-50" },

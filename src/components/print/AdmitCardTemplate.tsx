@@ -28,7 +28,7 @@ export const AdmitCardTemplate = forwardRef<HTMLDivElement, AdmitCardProps>(
               <div className="flex-1 text-center">
                 <h1 className="text-3xl font-bold uppercase tracking-wider">R.N.T. Public School</h1>
                 <p className="text-sm font-medium uppercase tracking-widest mt-1">Jankinagar Basantpur, Siwan (Bihar)</p>
-                <p className="text-xs mt-1">Affiliated to CBSE, New Delhi</p>
+                <p className="text-xs mt-1">R.N.T Public School</p>
                 <div className="mt-2 inline-block bg-black text-white px-6 py-1 font-bold text-lg uppercase tracking-widest">
                   ADMIT CARD
                 </div>

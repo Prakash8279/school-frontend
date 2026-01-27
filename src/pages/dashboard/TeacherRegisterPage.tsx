@@ -264,7 +264,7 @@ const TeacherRegisterPage = () => {
     pdf.setFontSize(9);
     pdf.setFont("helvetica", "normal");
     pdf.text("Jankinagar Basantpur, Siwan (Bihar)", 105, 26, { align: "center" });
-    pdf.text("Affiliated to CBSE | Est. 1995", 105, 30, { align: "center" });
+    pdf.text("R.N.T Public School | Est. 1995", 105, 30, { align: "center" });
 
     pdf.setLineWidth(0.5);
     pdf.line(margin, 38, pageWidth - margin, 38);

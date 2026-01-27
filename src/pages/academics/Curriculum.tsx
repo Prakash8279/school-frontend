@@ -16,7 +16,7 @@ const Curriculum = () => {
   ];
 
   const features = [
-    "CBSE curriculum following NCF guidelines",
+    "Comprehensive curriculum following modern educational guidelines",
     "Activity-based learning approach",
     "Regular assessments and feedback",
     "Focus on conceptual understanding",
@@ -39,7 +39,7 @@ const Curriculum = () => {
                 <BookOpen className="w-10 h-10 text-blue-600" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Curriculum</h1>
-              <p className="text-xl text-gray-600">CBSE Affiliated Comprehensive Education</p>
+              <p className="text-xl text-gray-600">Comprehensive Quality Education for All</p>
             </div>
 
             {/* Subjects Grid */}
